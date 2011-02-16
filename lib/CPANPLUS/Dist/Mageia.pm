@@ -12,7 +12,7 @@ use warnings;
 
 package CPANPLUS::Dist::Mageia;
 BEGIN {
-  $CPANPLUS::Dist::Mageia::VERSION = '1.110470';
+  $CPANPLUS::Dist::Mageia::VERSION = '1.110471';
 }
 # ABSTRACT: a cpanplus backend to build mageia rpms
 
@@ -516,7 +516,7 @@ CPANPLUS::Dist::Mageia - a cpanplus backend to build mageia rpms
 
 =head1 VERSION
 
-version 1.110470
+version 1.110471
 
 =head1 DESCRIPTION
 

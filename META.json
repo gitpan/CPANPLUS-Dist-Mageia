@@ -54,7 +54,7 @@
    "provides" : {
       "CPANPLUS::Dist::Mageia" : {
          "file" : "lib/CPANPLUS/Dist/Mageia.pm",
-         "version" : "1.110470"
+         "version" : "1.110471"
       }
    },
    "release_status" : "stable",
@@ -70,7 +70,7 @@
          "web" : "http://github.com/jquelin/cpanplus-dist-mageia"
       }
    },
-   "version" : "1.110470",
+   "version" : "1.110471",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
