@@ -20,7 +20,7 @@ my %module_build_args = (
     'Jerome Quelin'
   ],
   'dist_name' => 'CPANPLUS-Dist-Mageia',
-  'dist_version' => '1.110471',
+  'dist_version' => '1.111720',
   'license' => 'perl',
   'module_name' => 'CPANPLUS::Dist::Mageia',
   'recommends' => {},
