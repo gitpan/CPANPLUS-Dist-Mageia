@@ -12,7 +12,7 @@ use warnings;
 
 package CPANPLUS::Dist::Mageia;
 {
-  $CPANPLUS::Dist::Mageia::VERSION = '1.112710';
+  $CPANPLUS::Dist::Mageia::VERSION = '1.121710';
 }
 # ABSTRACT: a cpanplus backend to build mageia rpms
 
@@ -33,7 +33,8 @@ use Readonly;
 use Text::Wrap;
 
 
-Readonly my $RPMDIR => do { chomp(my $d=qx[ rpm --eval %_topdir ]); $d; };
+my @RPMSUBDIRS = qw{ build rpm source spec srcrpm };
+my %RPMDIR =  map {do { chomp(my $d=qx[ rpm --eval %_${_}dir ]); $_, $d; }} @RPMSUBDIRS ;
 
 # -- class methods
 
@@ -48,8 +49,8 @@ sub format_available {
     my $flag;
 
     # check rpm tree structure
-    foreach my $subdir ( qw{ BUILD RPMS SOURCES SPECS SRPMS tmp } ) {
-        my $dir = "$RPMDIR/$subdir";
+    foreach my $subdir ( keys %RPMDIR ) {
+        my $dir = "$RPMDIR{$subdir}";
         next if -d $dir;
         error( "missing directory '$dir'" );
         $flag++;
@@ -176,7 +177,7 @@ sub prepare {
     }
 
     # compute & store path of specfile.
-    my $spec = "$RPMDIR/SPECS/$rpmname.spec";
+    my $spec = "$RPMDIR{spec}/$rpmname.spec";
     $status->specpath($spec);
 
     my $vers = $module->version;
@@ -215,7 +216,7 @@ sub prepare {
 
     # copy package.
     my $basename = basename $module->status->fetch;
-    my $tarball = "$RPMDIR/SOURCES/$basename";
+    my $tarball = "$RPMDIR{source}/$basename";
     copy( $module->status->fetch, $tarball );
 
     msg( "specfile for '$distname' written" );
@@ -276,8 +277,8 @@ sub create {
 
         # check if the dry-run finished correctly
         if ( $success ) {
-            my ($rpm)  = (sort glob "$RPMDIR/RPMS/*/$rpmname-*.rpm")[0];
-            my ($srpm) = (sort glob "$RPMDIR/SRPMS/$rpmname-*.src.rpm")[-1];
+            my ($rpm)  = (sort glob "$RPMDIR{rpm}/*/$rpmname-*.rpm")[0];
+            my ($srpm) = (sort glob "$RPMDIR{srcrpm}/$rpmname-*.src.rpm")[-1];
             msg( "rpm created successfully: $rpm" );
             msg( "srpm available: $srpm" );
             # c::d::mga store
@@ -361,7 +362,7 @@ sub install {
 # 
 sub _has_been_build {
     my ($self, $name, $vers) = @_;
-    my $pkg = ( sort glob "$RPMDIR/RPMS/*/$name-$vers-*.rpm" )[-1];
+    my $pkg = ( sort glob "$RPMDIR{rpm}/*/$name-$vers-*.rpm" )[-1];
     return $pkg;
     # FIXME: should we check cooker?
 }
@@ -520,7 +521,7 @@ CPANPLUS::Dist::Mageia - a cpanplus backend to build mageia rpms
 
 =head1 VERSION
 
-version 1.112710
+version 1.121710
 
 =head1 DESCRIPTION
 
