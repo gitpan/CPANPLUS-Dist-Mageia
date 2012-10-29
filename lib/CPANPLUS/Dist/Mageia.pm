@@ -12,7 +12,7 @@ use warnings;
 
 package CPANPLUS::Dist::Mageia;
 {
-  $CPANPLUS::Dist::Mageia::VERSION = '1.121710';
+  $CPANPLUS::Dist::Mageia::VERSION = '2.000';
 }
 # ABSTRACT: a cpanplus backend to build mageia rpms
 
@@ -455,7 +455,7 @@ sub _module_description {
         }
     }
 
-    return 'no description found';
+    return '';
 }
 
 
@@ -512,6 +512,7 @@ sub _module_summary {
 
 1;
 
+__END__
 
 =pod
 
@@ -521,7 +522,7 @@ CPANPLUS::Dist::Mageia - a cpanplus backend to build mageia rpms
 
 =head1 VERSION
 
-version 1.121710
+version 2.000
 
 =head1 DESCRIPTION
 
@@ -656,8 +657,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
-
