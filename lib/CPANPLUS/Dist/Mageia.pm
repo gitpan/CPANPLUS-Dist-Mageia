@@ -12,7 +12,7 @@ use warnings;
 
 package CPANPLUS::Dist::Mageia;
 # ABSTRACT: a cpanplus backend to build mageia rpms
-$CPANPLUS::Dist::Mageia::VERSION = '2.100401';
+$CPANPLUS::Dist::Mageia::VERSION = '2.101';
 use base 'CPANPLUS::Dist::Base';
 
 use CPANPLUS::Error; # imported subs: error(), msg()
@@ -521,7 +521,7 @@ CPANPLUS::Dist::Mageia - a cpanplus backend to build mageia rpms
 
 =head1 VERSION
 
-version 2.100401
+version 2.101
 
 =head1 DESCRIPTION
 

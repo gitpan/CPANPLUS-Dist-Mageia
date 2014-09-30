@@ -66,7 +66,7 @@
    "provides" : {
       "CPANPLUS::Dist::Mageia" : {
          "file" : "lib/CPANPLUS/Dist/Mageia.pm",
-         "version" : "2.100401"
+         "version" : "2.101"
       }
    },
    "release_status" : "stable",
@@ -82,7 +82,7 @@
          "web" : "https://github.com/jquelin/cpanplus-dist-mageia"
       }
    },
-   "version" : "2.100401",
+   "version" : "2.101",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.020001"
@@ -443,7 +443,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "v2.100401",
+                  "tag" : "v2.101",
                   "tag_format" : "v%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
