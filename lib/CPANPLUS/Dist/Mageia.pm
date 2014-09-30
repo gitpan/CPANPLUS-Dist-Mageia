@@ -11,11 +11,8 @@ use strict;
 use warnings;
 
 package CPANPLUS::Dist::Mageia;
-{
-  $CPANPLUS::Dist::Mageia::VERSION = '2.000';
-}
 # ABSTRACT: a cpanplus backend to build mageia rpms
-
+$CPANPLUS::Dist::Mageia::VERSION = '2.100401';
 use base 'CPANPLUS::Dist::Base';
 
 use CPANPLUS::Error; # imported subs: error(), msg()
@@ -129,9 +126,9 @@ sub prepare {
     } else {
         # module::build only distribution
         push @reqs, 'Module::Build';
-        $distbuild = "%{__perl} Build.PL installdirs=vendor\n";
+        $distbuild = "%{__perl} Build.PL --installdirs=vendor\n";
         $distmaker = "./Build";
-        $distinstall = "./Build install destdir=%{buildroot}";
+        $distinstall = "./Build install --destdir=%{buildroot}";
     }
     my $distbreqs      = join "\n", map { "BuildRequires: perl($_)" } 
                          grep { $_ ne "perl" } @reqs;
@@ -516,13 +513,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 CPANPLUS::Dist::Mageia - a cpanplus backend to build mageia rpms
 
 =head1 VERSION
 
-version 2.000
+version 2.100401
 
 =head1 DESCRIPTION
 
